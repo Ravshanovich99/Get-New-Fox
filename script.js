@@ -1,6 +1,5 @@
 const URL = 'https://randomfox.ca/floof/'
 
-const imageBlock = document.querySelector('.main-image')
 const image = document.querySelector('.main-img  img')
 const btn = document.querySelector('.animated-button1')
 const history = document.querySelector('.history')
@@ -16,8 +15,7 @@ async function getFox() {
 
 
     try{
-        const response = await fetch(URL)
-        const linkFox = await response.json()
+        const linkFox = await fetch(URL).then(result => result.json())
         const linkImage = linkFox.image
         image.src = linkImage
         historyImage(linkImage)
